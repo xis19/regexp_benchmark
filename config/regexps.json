@@ -1,0 +1,8 @@
+{
+    "plain": "plain_text",
+    "single_dot": "test.string",
+    "matching_character": "[asdfgh]ghijkl[qwerty]",
+    "excluding_character": "[^asdfgh]ghijkl[qwerty]",
+    "repeat": "b{3}lyp",
+    "repeat_range": "8{3,8}7654"
+}
