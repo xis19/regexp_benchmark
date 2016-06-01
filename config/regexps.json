@@ -3,6 +3,10 @@
     "single_dot": "test.string",
     "matching_character": "[asdfgh]ghijkl[qwerty]",
     "excluding_character": "[^asdfgh]ghijkl[qwerty]",
+    "character_range": "[a-z]tesi[^0-9]",
     "repeat": "b{3}lyp",
-    "repeat_range": "8{3,8}7654"
+    "repeat_range": "8{3,8}7654",
+    "repeat_star": "test[a-z]*value",
+    "repeat_plus": "value[1-9]+test",
+    "optional_value": "valuec?test"
 }

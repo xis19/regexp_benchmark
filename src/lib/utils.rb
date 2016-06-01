@@ -15,7 +15,7 @@ module Utils
   @@regexps = nil
 
   class << self
-    # @return [OpenStruct] The config 
+    # @return [OpenStruct] The config
     def config
       if @@config.nil?
         @@config = OpenStruct.new
@@ -31,6 +31,14 @@ module Utils
         read_json_file(REGEXP_FILE, @@regexps)
       end
       @@regexps
+    end
+
+    # @return [Float]
+    def get_run_time(&block)
+      start = Time.now.getutc.to_f
+      block.call
+      final = Time.now.getutc.to_f
+      final - start
     end
 
     private
