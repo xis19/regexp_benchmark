@@ -16,7 +16,14 @@ REGEXPS = Utils::regexps
 
 # Create a random printable character
 def random_character
-  Random.rand(32...128).chr
+  Random.rand(32...127).chr
+end
+
+# Create a random string with given length
+# @param [Fixnum] length
+def random_string(length=nil)
+  length = Random.rand(32) if length.nil?
+  (0...length).map { random_character }.join('')
 end
 
 
@@ -43,16 +50,14 @@ end
 # @param [IO] stream Stream that accepts the text
 # @param [String] regex_str Regular expression in string format
 def write_test(stream, regex_str)
-  # We need leading and postfix '.*' to allow texts added before/after the
-  # regular expression
-  compiled_regexp = Regexp.compile('.*' + regex_str + '.*')
+  compiled_regexp = Regexp.compile(regex_str)
 
   generate_matching_regex_strings = -> do
     (0...CONFIG.num_matching_lines).map do
       begin
         example = compiled_regexp.random_example.gsub(/[^[[:print:]]]/, '')
       end until compiled_regexp.match(example)
-      example
+      random_string + example + random_string
     end
   end
 
@@ -60,7 +65,9 @@ def write_test(stream, regex_str)
   generate_not_matching_regex_strings = -> do
     (0...CONFIG.num_not_matching_lines).map do
       begin
-        example = mutate(compiled_regexp.random_example.gsub(/[^[[:print:]]]/, ''))
+        example = (random_string +
+                   mutate(compiled_regexp.random_example.gsub(/[^[[:print:]]]/, '')) +
+                   random_string)
       end until !compiled_regexp.match(example)
       example
     end
