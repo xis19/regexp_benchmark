@@ -1,0 +1,37 @@
+{
+    "std_regex": {
+        "regexp_header_file": "<regex>",
+        "regexp_class": "std::regex",
+        "regexp_search_function": "std::regex_search(line, regexp)",
+        "regexp_construction": "",
+        "link_library": null
+    },
+    "boost_regex": {
+        "regexp_header_file": "<boost/regex.hpp>",
+        "regexp_class": "boost::regex",
+        "regexp_search_function": "boost::regex_search(line, regexp)",
+        "regexp_construction": "",
+        "link_library": "-lboost_regex"
+    },
+    "boost_xpressive": {
+        "regexp_header_file": "<boost/xpressive/xpressive.hpp>",
+        "regexp_class": "boost::xpressive::sregex",
+        "regexp_search_function": "boost::xpressive::regex_search(line, regexp)",
+        "regexp_construction": "=boost::xpressive::sregex::compile",
+        "link_library": null
+    },
+    "pcrecpp": {
+        "regexp_header_file": "<pcrecpp.h>",
+        "regexp_class": "pcrecpp::RE",
+        "regexp_search_function": "regexp.PartialMatch(line)",
+        "regexp_construction": "",
+        "link_library": "-lpcre -lpcrecpp"
+    },
+    "re2": {
+        "regexp_header_file": "<re2/re2.h>",
+        "regexp_class": "RE2",
+        "regexp_search_function": "RE2::PartialMatch(line, regexp)",
+        "regexp_construction": "",
+        "link_library": "-lre2"
+    }
+}

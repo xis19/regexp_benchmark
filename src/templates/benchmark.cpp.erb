@@ -1,0 +1,65 @@
+#include "benchmark.h"
+
+#include <chrono>
+#include <string>
+#include <vector>
+
+#include <boost/lexical_cast.hpp>
+
+#include "config.h"
+
+
+double performBenchmark(
+        const std::vector<std::string>& lines,
+        const std::string& regexpStr,
+        const <%= regexp_class %>& regexp) {
+
+    const Config* config = Config::getConfig();
+    const auto EXPECTED_MATCHING = config->numMatchingLines();
+    const auto EXPECTED_NOT_MATCHING = config->numNotMatchingLines();
+
+    std::chrono::steady_clock::time_point beginTime =
+            std::chrono::steady_clock::now();
+
+    for(auto _ = 0; _ < config->repeatTimes(); ++_) {
+        int matches(0), notMatches(0);
+
+        for(const auto& line: lines) {
+            if ( <%= regexp_search_function %>) {
+                ++matches;
+            } else {
+                ++notMatches;
+            }
+        }
+
+        if (matches != EXPECTED_MATCHING) {
+            throw std::runtime_error(
+                std::string("For /") + regexpStr + "/, expecting " +
+                boost::lexical_cast<std::string>(EXPECTED_MATCHING) +
+                " matches but got " +
+                boost::lexical_cast<std::string>(matches));
+        }
+        if (notMatches != EXPECTED_NOT_MATCHING) {
+            throw std::runtime_error(
+                std::string("For /") + regexpStr + "/, expecting " +
+                boost::lexical_cast<std::string>(EXPECTED_NOT_MATCHING) +
+                " not matches but got " +
+                boost::lexical_cast<std::string>(notMatches));
+        }
+    }
+
+    std::chrono::steady_clock::time_point endTime =
+        std::chrono::steady_clock::now();
+
+    return static_cast<double>(
+            std::chrono::duration_cast<std::chrono::microseconds>(
+                endTime - beginTime).count()) / 1e6;
+}
+
+double performDynamicBenchmark(
+        const std::vector<std::string>& lines,
+        const std::string& regexpStr) {
+    <%= regexp_class %> regexp<%= regexp_construction %>(regexpStr);
+    return performBenchmark(lines, regexpStr, regexp);
+}
+

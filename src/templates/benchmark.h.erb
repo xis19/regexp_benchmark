@@ -1,0 +1,17 @@
+#ifndef __BENCHMARK_H
+#define __BENCHMARK_H
+
+#include <string>
+#include <vector>
+
+#include <%= regexp_header_file %>
+
+double performBenchmark(
+        const std::vector<std::string>&,
+        const std::string&,
+        const <%= regexp_class %>&);
+
+double performDynamicBenchmark(
+        const std::vector<std::string>&, const std::string&);
+
+#endif  // __BENCHMARK_H

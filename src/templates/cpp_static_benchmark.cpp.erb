@@ -1,0 +1,24 @@
+#include <iostream>
+#include <exception>
+
+#include <boost/filesystem.hpp>
+#include <boost/filesystem/fstream.hpp>
+
+#include "benchmark.h"
+#include "utils.h"
+
+int main() {
+    std::vector<std::string> lines = loadFileToVector("<%= regexp_file_name %>");
+
+    try {
+        std::cout << performBenchmark(
+                lines, "<%= regexp_str %>",
+                <%= regexp_construction %>("<%= regexp_str%>"))
+            << std::endl;
+    } catch (std::runtime_error& err) {
+        std::cout << err.what() << std::endl;
+    }
+
+    return 0;
+}
+
