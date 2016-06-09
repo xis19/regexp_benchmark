@@ -14,21 +14,21 @@ Computational Details
 The following languages/tools/libraries with regular expression are included
 in this benchmark test:
 
- | Engine | Version |
- |--------|---------|
- |javascript|```v4.4.4```|
- |python2|```Python 2.7.11+```|
- |python3|```Python 3.5.1+```|
- |ruby|```ruby 2.3.1p112 (2016-04-26) [x86_64-linux-gnu]```|
- |perl|```This is perl 5```|
- |grep|```grep (GNU grep) 2.25```|
- |sed|```sed (GNU sed) 4.2.2```|
- |awk|```GNU Awk 4.1.3, API: 1.1 (GNU MPFR 3.1.4-p2, GNU MP 6.1.0)```|
- |std::regex|```g++ (Debian 5.3.1-21) 5.3.1 20160528```|
- |boost::regex|```1.58.0.1```|
- |boost::xpressive|```1.58.0.1```|
- |pcre3|```2:8.38-3.1```|
- |re2|```20160501+dfsg-1```|
+| Engine | Version |
+|--------|---------|
+|javascript|```v4.4.4```|
+|python2|```Python 2.7.11+```|
+|python3|```Python 3.5.1+```|
+|ruby|```ruby 2.3.1p112 (2016-04-26) [x86_64-linux-gnu]```|
+|perl|```This is perl 5```|
+|grep|```grep (GNU grep) 2.25```|
+|sed|```sed (GNU sed) 4.2.2```|
+|awk|```GNU Awk 4.1.3, API: 1.1 (GNU MPFR 3.1.4-p2, GNU MP 6.1.0)```|
+|std::regex|```g++ (Debian 5.3.1-21) 5.3.1 20160528```|
+|boost::regex|```1.58.0.1```|
+|boost::xpressive|```1.58.0.1```|
+|pcre3|```2:8.38-3.1```|
+|re2|```20160501+dfsg-1```|
 
  The regular expressions used in this benchmark are listed below:
 
