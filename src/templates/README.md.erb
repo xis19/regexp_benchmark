@@ -1,0 +1,43 @@
+The Benchmark of Regular Expression Libraries
+====
+
+Introduction
+----
+
+Regular epxressions (regexp) are widely used in text parsing. When processing
+large text files, the performance of the regexp engine will greatly affect the
+efficiency of the parser. In this project, various regexp engines are compared
+using different regexps and corresponding texts.
+
+Computational Details
+----
+The following languages/tools/libraries with regular expression are included
+in this benchmark test:
+
+ | Engine | Version |
+ |--------|---------|<% results.each do |result| %>
+ |<%= result[:engine] %>|```<%= result[:version] %>```|<% end %>
+
+ The regular expressions used in this benchmark are listed below:
+
+| Name | Regular expression |
+|------|--------------------|<% regexps.each do |regexp| %>
+|<%= regexp[:name] %>|/```<%= regexp[:regexp] %>```/|<% end %>
+
+Results
+----
+
+The results of the timing for each regexp under the given engine is normalized
+so that the minimal time is 1.00.
+
+|Engine|<% regexps.each do |regexp| %><%= regexp[:name] %>|<% end %>
+|------|<% regexps.each do |regexp| %>------| <% end %> <% results.each do |result| %>
+|<%= result[:engine] %>|<%regexps.each.map {|i| i[:name] }.each do |name| %><%= sprintf("%.2f", result[:normalized][name]) %>|<% end %><% end %>
+
+Discussion
+----
+To be done.
+
+Conclusion
+----
+To be done.

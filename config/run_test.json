@@ -1,0 +1,61 @@
+{
+    "tests": {
+        "javascript": {
+            "version": "node -v",
+            "execute": "src/javascript_benchmark.js"
+        },
+        "python2": {
+            "version": "python2 --version",
+            "execute": "python2 src/python_benchmark.py"
+        },
+        "python3": {
+            "version": "python3 --version",
+            "execute": "python3 src/python_benchmark.py"
+        },
+        "ruby": {
+            "version": "ruby --version",
+            "execute": "ruby src/ruby_benchmark.rb"
+        },
+        "perl": {
+            "version": "perl --version | head -n2 | tail -n1 | cut -d',' -f1",
+            "execute": "perl src/perl_benchmark.pl"
+        },
+        "grep": {
+            "version": "egrep --version | head -n1",
+            "execute": "ruby src/grep_benchmark.rb"
+        },
+        "sed": {
+            "version": "sed --version | head -n1",
+            "execute": "ruby src/sed_benchmark.rb"
+        },
+        "awk": {
+            "version": "awk --version | head -n1",
+            "execute": "ruby src/awk_benchmark.rb"
+        },
+        "std::regex": {
+            "version": "g++ --version | head -n1",
+            "compile": "src/compile_cpp_dynamic_benchmark.rb std_regex",
+            "execute": "./cpp_std_regex_dynamic"
+        },
+        "boost::regex": {
+            "version": "dpkg -l libboost-dev | tail -n1 | tr -s ' ' | cut -d' ' -f3",
+            "compile": "src/compile_cpp_dynamic_benchmark.rb boost_regex",
+            "execute": "./cpp_boost_regex_dynamic"
+        },
+        "boost::xpressive": {
+            "version": "dpkg -l libboost-dev | tail -n1 | tr -s ' ' | cut -d' ' -f3",
+            "compile": "src/compile_cpp_dynamic_benchmark.rb boost_xpressive",
+            "execute": "./cpp_boost_xpressive_dynamic"
+        },
+        "pcre3": {
+            "version": "dpkg -l libpcre3-dev | tail -n1 | tr -s ' ' | cut -d' ' -f3",
+            "compile": "src/compile_cpp_dynamic_benchmark.rb pcrecpp",
+            "execute": "./cpp_pcrecpp_dynamic"
+        },
+        "re2": {
+            "version": "dpkg -l libre2-dev | tail -n1 | tr -s ' ' | cut -d' ' -f3",
+            "compile": "src/compile_cpp_dynamic_benchmark.rb re2",
+            "execute": "./cpp_re2_dynamic"
+        }
+    }
+}
