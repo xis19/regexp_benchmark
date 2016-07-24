@@ -24,7 +24,7 @@ module BenchmarkBase
 
         # Verify the matching first
         matching = `#{cmd} | wc -l`.to_i
-        unless matching == 5000
+        unless matching == CONFIG.num_matching_lines
           raise "Expecting #{CONFIG.num_matching_lines} matches, got #{matching} for /#{regexp_str}/"
         end
 
